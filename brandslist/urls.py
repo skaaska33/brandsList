@@ -16,5 +16,5 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^rest/brands/', include('brandslist.apps.brands.urls')),
+    url(r'^rest/', include('brandslist.apps.brands.urls')),
 ]

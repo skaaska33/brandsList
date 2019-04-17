@@ -12,7 +12,7 @@ class BrandsPagination(PageNumberPagination):
     page_size_query_param = 'skip'
 
 
-class BrnadsList(generics.ListAPIView):
+class BrandsList(generics.ListAPIView):
     serializer_class = BrandSerializer
     pagination_class = BrandsPagination
     http_method_names = ['get']
