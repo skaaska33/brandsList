@@ -9,6 +9,14 @@ services:
       - './base.html:/srv/brandslist/base.html'
     links:
       - 'uwsgi'
+  migration:
+    build:
+      context: .
+    volumes:
+      - './:/srv/brandslist'
+    entrypoint: python3 manage.py migrate
+    depends_on:
+      - 'postgres'
   uwsgi:
     build:
       context: .
