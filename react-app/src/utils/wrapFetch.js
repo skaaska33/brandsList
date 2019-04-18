@@ -5,11 +5,11 @@ export function wrapFetch(url, options, dispatch) {
     return new Promise(function (succeed, fail) {
             fetch(url, options)
                 .then(response => {
-                        let contentType = response.headers.get("content-type") === 'application/json';
+                        let isJson = response.headers.get("content-type") === 'application/json';
                         if (response.ok) {
-                            contentType ? succeed(response.json()) : succeed(response.text());
+                            isJson ? succeed(response.json()) : succeed(response.text());
                         } else {
-                            if (contentType) {
+                            if (isJson) {
                                 response.json().then(data => {
                                     dispatch(setMessage(data.detail, 'Ошибка'));
                                 });
