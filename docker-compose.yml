@@ -14,7 +14,7 @@ services:
       context: .
     volumes:
       - './:/srv/brandslist'
-    entrypoint: python manage.py migrate
+    entrypoint: ["./wait-for-it.sh", "db:5432", "--", "python", "manage.py","migrate"]
     depends_on:
       - 'postgres'
   uwsgi:
