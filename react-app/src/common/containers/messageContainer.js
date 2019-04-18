@@ -1,6 +1,5 @@
 import {connect} from "react-redux";
-import TransitionClass from "../../commonComponents/TransitionClass/TransitionClass.jsx";
-import Message from "../../commonComponents/Message/Message.jsx";
+import Message from "../components/Message/Message.jsx";
 import {setMessage} from "../reducer.js";
 
 
