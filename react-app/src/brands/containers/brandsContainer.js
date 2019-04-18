@@ -3,7 +3,7 @@ import Main from "../components/Main/Main.jsx";
 import {
     getFirstBrandsFromServer,
     setLoadingBrands,
-    getAdditionallyBrandsFromServer
+    getMoreBrandsFromServer,
 } from "../reducer.js";
 
 
@@ -18,6 +18,6 @@ export default connect(
     (dispatch) => ({
         getFirstBrandsFromServer: (nameToSearch) => dispatch(getFirstBrandsFromServer(nameToSearch)),
         setLoadingBrands: (loading) => dispatch(setLoadingBrands(loading)),
-        getAdditionallyBrandsFromServer: () => dispatch(getAdditionallyBrandsFromServer()),
+        getMoreBrandsFromServer: () => dispatch(getMoreBrandsFromServer()),
     })
 )(Main);

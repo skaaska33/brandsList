@@ -1,5 +1,7 @@
 import update from "immutability-helper/index";
 import {wrapFetch} from "../utils/wrapFetch";
+import {setMessage} from "../common/reducer";
+
 
 const initialState = {
     loadingBrands: true,
@@ -43,7 +45,7 @@ export function brandsReducer(brands = initialState, action) {
             return update(brands, {loadingBrandsAdd: {$set: action.value}});
         case SET_BRANDS:
             return update(brands, {
-                brandsList: {$set: action.response.result},
+                brandsList: {$set: action.response.results},
                 nextLink: {$set: action.response.next},
                 countBrands: {$set: action.response.count}
             });
@@ -67,14 +69,16 @@ export const getFirstBrandsFromServer = function (nameToSeach) {
 };
 
 /*Получение дополнительных брендов при скроллинге*/
-export const getAdditionallyBrandsFromServer = function () {
+export const getMoreBrandsFromServer = function () {
     return function (dispatch, getState) {
+         dispatch(setLoadingAddBrands(true));
         let state = getState();
         wrapFetch(state.brands.nextLink, {credentials: "same-origin"}, dispatch)
             .then(data => {
-                data.result = state.brands.brandsList.concat(data.result);
+                data.results = state.brands.brandsList.concat(data.results);
                 dispatch(setBrands(data));
                 dispatch(setLoadingAddBrands(false));
+                !data.next && dispatch(setMessage('Все бренды загружены', 'Сообщение'))
             })
             .catch(() => {
                 dispatch(setLoadingAddBrands(false));
