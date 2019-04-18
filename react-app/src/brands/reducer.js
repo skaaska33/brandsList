@@ -11,9 +11,11 @@ const initialState = {
     brandsList: []
 };
 
+
 const SET_LOADING_BRANDS = 'SET_LOADING_BRANDS';
 const SET_LOADING_ADD_BRANDS = 'SET_LOADING_ADD_BRANDS';
 const SET_BRANDS = 'SET_BRANDS';
+
 
 export function setLoadingBrands(value) {
     return {
@@ -22,12 +24,14 @@ export function setLoadingBrands(value) {
     }
 }
 
+
 export function setLoadingAddBrands(value) {
     return {
         type: SET_LOADING_ADD_BRANDS,
         value: value,
     }
 }
+
 
 export function setBrands(response) {
     return {
@@ -54,6 +58,7 @@ export function brandsReducer(brands = initialState, action) {
     }
 }
 
+
 /*Получение списка брендов при монтировании компонента и при изменение названия бренда для поиска*/
 export const getFirstBrandsFromServer = function (nameToSeach) {
     return function (dispatch) {
@@ -67,6 +72,7 @@ export const getFirstBrandsFromServer = function (nameToSeach) {
             })
     }
 };
+
 
 /*Получение дополнительных брендов при скроллинге*/
 export const getMoreBrandsFromServer = function () {

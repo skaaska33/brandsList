@@ -7,7 +7,9 @@ const initialState = {
     },
 };
 
+
 const SET_MESSAGE = 'SET_MESSAGE';
+
 
 export function setMessage(text, header) {
     return {
@@ -16,6 +18,7 @@ export function setMessage(text, header) {
         header: header
     }
 }
+
 
 export function commonReducer(common = initialState, action) {
     if (action.type === SET_MESSAGE) {

@@ -2,7 +2,6 @@ import React from "react";
 import ContentLoading from '../../../common/components/ContentLoading/ContentLoading.jsx'
 import Cardinput from '../CardInput/CardInput.jsx'
 import Brand from '../Brand/Brand.jsx'
-import {getFirstBrandsFromServer} from "../../reducer";
 import {debounce} from "../../../utils/debouncing";
 
 export default class Message extends React.Component {
@@ -13,6 +12,7 @@ export default class Message extends React.Component {
         };
     }
 
+
     componentWillMount() {
         this.props.setLoadingBrands(true);
         this.props.getFirstBrandsFromServer('');
@@ -20,7 +20,8 @@ export default class Message extends React.Component {
         window.addEventListener('scroll', this.getAddBrandsOnScroll);
     }
 
-     componentWillUnmount() {
+
+    componentWillUnmount() {
         window.removeEventListener('scroll', this.getAddBrandsOnScroll);
     }
 
@@ -33,14 +34,12 @@ export default class Message extends React.Component {
     };
 
 
-
     /*Функция на событие сролла в конец старницы*/
     getAddBrandsOnScroll = () => {
         if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight && this.props.nextLink && !this.props.loadingAdd) {
             this.props.getMoreBrandsFromServer();
         }
     };
-
 
 
     render() {
@@ -72,7 +71,6 @@ export default class Message extends React.Component {
                                     </div>
                                 </div>
                             </ContentLoading>}
-
                         </ContentLoading>
                     </div>
                 </div>

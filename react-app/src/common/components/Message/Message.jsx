@@ -8,6 +8,7 @@ export default class Message extends React.Component {
         };
     }
 
+
     componentWillReceiveProps(nextProps) {
         if (!this.props.text && nextProps.text) {
             this.setState({fade: false})
@@ -16,6 +17,7 @@ export default class Message extends React.Component {
             this.setState({fade: true})
         }
     }
+
 
     render() {
         return (
